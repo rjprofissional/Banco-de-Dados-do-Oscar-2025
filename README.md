@@ -1,301 +1,201 @@
-# Banco-de-Dados-do-Oscar-2025
-Qual o total de registros na tabela indicados?
-R: 11015
+🎬 Banco de Dados do Oscar 2025
+Bem-vindo ao Banco de Dados do Oscar 2025, um projeto fascinante que compila informações completas sobre indicações e vitórias no Oscar, desde sua primeira edição até os dias atuais! Este repositório oferece uma base de dados robusta e consultas prontas para explorar curiosidades sobre filmes, atores, diretores e muito mais. 🚀
 
-Q:db.Registros.count()
+🌟 Visão Geral
+Este banco de dados, implementado em MongoDB, contém 11.015 registros de indicações ao Oscar, abrangendo categorias, filmes, anos e indicados. Com ele, você pode descobrir quantas vezes Natalie Portman foi indicada, quais filmes venceram Melhor Filme e Melhor Diretor no mesmo ano, e outros fatos marcantes do cinema. Vamos mergulhar na história do Oscar! 🎥
 
-Qual o número de indicações por categoria agrupadas por categoria?
-R:
-'MUSIC (Original Song Score and Its Adaptation -or- Adaptation Score)',
- count: 6
- 
- 'WRITING (Screenplay Written Directly for the Screen)',
-  count: 120
- 
- 'HONORARY AWARD',
-  count: 135
-  
-  'CINEMATOGRAPHY (Color)',
-  count: 135
-  
-  'SPECIAL ACHIEVEMENT AWARD (Sound Editing)',
-  count: 1
-  
-  'DIRECTING',
-  count: 474
-  
-  'WRITING (Original Screenplay)',
-  count: 165
-  
-  'WRITING (Adaptation)',
-  count: 17
-  
-  'MUSIC (Song)',
-  count: 215
-  
-  'SHORT SUBJECT (Comedy)',
-  count: 13
-  
-  'DIRECTING (Dramatic Picture)',
-  count: 3
-  
-  'WRITING (Screenplay)',
-  count: 104
-  
-  'WRITING (Adapted Screenplay)',
-  count: 115
-  
-  'WRITING (Screenplay Adapted from Other Material)',
-  count: 10
-  
-  'DOCUMENTARY FEATURE FILM',
-  count: 15
-  
-  'AWARD OF COMMENDATION',
-  count: 1
-  
-  'WRITING (Story and Screenplay--written directly for the screen)',
-  count: 60
-  
-  'SOUND RECORDING',
-  count: 195
-  
-  'MUSIC (Original Score--for a motion picture [not a musical])',
-  count: 10
-  
-  'FOREIGN LANGUAGE FILM',
-  count: 315
-  e mais
+📊 Destaques do Banco de Dados
+1. Quantos registros estão no banco de dados?
 
-Q: db.Registros.aggregate([{$group:{_id: "$categoria",count:{$sum:1}}}])
-Quantas vezes Natalie Portman foi indicada ao Oscar?
-R: 3 vezes
+Resposta: 11.015 indicações.Consulta: db.Registros.count()
 
-Q:  db.Registros.find({nome_do_indicado : "Natalie Portman"}).count()
+2. Quantas indicações existem por categoria?
 
-Quantos Oscars Natalie Portman ganhou?
-R: 1 vez
+Resposta: Algumas categorias destacadas:
 
-Q:db.Registros.find({"nome_do_indicado":"Natalie Portman","vencedor":"true"}).count()
+Direção (DIRECTING): 474 indicações
+Filme Estrangeiro (FOREIGN LANGUAGE FILM): 315 indicações
+Música (Song): 215 indicações
+Gravação de Som (SOUND RECORDING): 195 indicações
+Roteiro Original (WRITING - Original Screenplay): 165 indicações
+... e muitas outras!
+
+Consulta: db.Registros.aggregate([{$group:{_id: "$categoria", count:{$sum:1}}}])
 
 
-Quantas vezes Viola Davis foi indicada ao Oscar?
-R: 4 vezes
+3. Quantas vezes Natalie Portman foi indicada ao Oscar?
 
-Q:db.Registros.find({"nome_do_indicado":"Viola Davis"}).count()
+Resposta: 3 vezes.Consulta: db.Registros.find({nome_do_indicado: "Natalie Portman"}).count()
 
+4. Quantos Oscars Natalie Portman ganhou?
 
-Quantos Oscars Viola Davis ganhou?
-R: 1 vez
+Resposta: 1 Oscar.Consulta: db.Registros.find({"nome_do_indicado":"Natalie Portman","vencedor":"true"}).count()
 
-Q:db.Registros.find({"nome_do_indicado":"Viola Davis","vencedor":"true"}).count()
+5. Quantas vezes Viola Davis foi indicada ao Oscar?
 
+Resposta: 4 vezes.Consulta: db.Registros.find({"nome_do_indicado":"Viola Davis"}).count()
 
-Amy Adams já ganhou algum Oscar?
-R: Não
+6. Quantos Oscars Viola Davis ganhou?
 
-Q:db.Registros.find({"nome_do_indicado":"Amy Adams"}).count()
+Resposta: 1 Oscar.Consulta: db.Registros.find({"nome_do_indicado":"Viola Davis","vencedor":"true"}).count()
 
-Quais os atores/atrizes que foram indicados mais de uma vez?
-R:
-'Music and Lyric by Randy Newman',
-contador: 13
-  
-'Judi Dench',
-contador: 8
+7. Amy Adams já ganhou algum Oscar?
 
-'Dorothy Jeakins',
-contador: 6
+Resposta: Não, ela nunca venceu.Consulta: db.Registros.find({"nome_do_indicado":"Amy Adams"}).count()
 
-'Julianne Moore',
-contador: 5
+8. Quais atores ou atrizes foram indicados mais de uma vez?
 
-'Viola Davis',
-contador: 4
+Resposta: Alguns nomes com múltiplas indicações:
 
-'Consolata Boyle',
-contador: 3
-  
-'Peter Lord',
-contador: 3
+Randy Newman: 13 indicações
+Judi Dench: 8 indicações
+Dorothy Jeakins: 6 indicações
+Julianne Moore: 5 indicações
+Viola Davis: 4 indicações
+... e outros!
 
-'Sam Wood',
-contador: 3
-
-'Catherine Martin',
-contador: 3
-  
-'Sam Rockwell',
-contador: 2
-
-'Metro-Goldwyn-Mayer Studio Music Department, Nat W. Finston, head of department  (Score by Herbert Stothart)',
-contador: 2
-  
-'Louis Brock, Producer',
-contador: 2
-
-'Lee J. Cobb',
-contador: 2
-
-'John Healy, Producer',
-contador: 2
-
-'Gordon Willis',
-contador: 2
-
-'Theodore Soderberg, Herman Lewis',
-contador: 2
-
-'Scarlett Johansson',
-contador: 2
-
-'William Ziegler',
- contador: 3
-e mais
-  
-Q:db.Registros.aggregate({$group:{_id :"$nome_do_indicado", contador:{$sum:1}}},{$match:{contador:{$gt:1}}}
-
-A série de filmes Toy Story ganhou Oscars em quais anos?
-R: 2011 e 2020
-
-Q: db.Registros.find({nome_do_filme:/Toy Story/,vencedor:"true"})
-
-A partir de que ano que a categoria "Actress" deixa de existir?
-R: 1928
-
-Q:db.Registros.findOne({categoria:"ACTRESS"})
-
-Quem ganhou o primeiro Oscar para Melhor Atriz? Em que ano?
-R: Janet Gaynor, 1928
-
-Q:db.Registros.findOne({categoria:"ACTRESS"})
-
-Na campo "Vencedor", altere todos os valores com "true" para 1 e todos os valores "false" para 0.
-R: Prontinhp
-
-Q: db.Registros.updateMany({vencedor:"false"},{$set: {vencedor: 0}}), db.Registros.updateMany({vencedor:"true"},{$set: {vencedor: 1}})
-
-Em qual edição do Oscar "Crash" concorreu ao Oscar?
-R: 2006
-
-Q:db.Registros.find({"nome_do_filme":"Crash"},{ano_cerimonia:1})
-
-O filme Central do Brasil aparece no Oscar?
-R: Sim
-
-Q:db.Registros.find({"nome_do_filme":"Central Station"})
-
-Inclua no banco 3 filmes que nunca foram nem nomeados ao Oscar, mas que merecem ser.
-R: Inspetor Faustão e Malandro: A  missão (primeira e única), Ó Pai, Ó e Os Sete Gatinhos
-
-Q:
-db.Registros.insertMany([{
-id_registro: 20000,
-  ano_filmagem: 1991,
-  ano_cerimonia: 1992,
-  cerimonia: 64,
-  categoria: "ACTOR IN A LEADING ROLE",
-  nome_do_indicado: "Fausto Corrêa",
-  nome_do_filme: "Inspector Faustão and Mallandro: The Mission (First and Only)",
-  vencedor: "false"
-},{
-id_registro: 20001,
-  ano_filmagem: 2007,
-  ano_cerimonia: 2008,
-  cerimonia: 80,
-  categoria: "INTERNATIONAL FEATURE FILM",
-  nome_do_indicado: "Brazil",
-  nome_do_filme: "O Dad, O",
-  vencedor: "false"
-},
-{
-id_registro: 20002,
-  ano_filmagem: 1980,
-  ano_cerimonia: 1981,
-  cerimonia: 53,
-  categoria: "BEST PICTURE",
-  nome_do_indicado: "Neville d'Almeida and  Gilberto Loureiro",
-  nome_do_filme: "The Seven Kittens",
-  vencedor: "false"
-}])
-Denzel Washington já ganhou algum Oscar?
-R: Sim, 2 vezes
-
-Q:db.Registros.find({"nome_do_indicado":"Denzel Washington","vencedor":"true"})
+Consulta: db.Registros.aggregate({$group:{_id: "$nome_do_indicado", contador:{$sum:1}}},{$match:{contador:{$gt:1}}})
 
 
-Quais os filmes que ganharam o Oscar de Melhor Filme?
-R:
- nome_do_filme: 'Lawrence of Arabia'
- 
- nome_do_filme: 'Tom Jones'
+9. Em quais anos a série Toy Story ganhou Oscars?
 
- nome_do_filme: 'My Fair Lady'
+Resposta: 2011 e 2020.Consulta: db.Registros.find({nome_do_filme:/Toy Story/, vencedor:"true"})
 
-e mais
+10. A partir de que ano a categoria "Actress" deixou de existir?
 
-Q:db.Registros.find({"categoria":"BEST PICTURE","vencedor":"true"},{_id:0,nome_do_filme:1})
+Resposta: Após 1928.Consulta: db.Registros.findOne({categoria:"ACTRESS"})
 
-Sidney Poitier foi o primeiro ator negro a ser indicado ao Oscar. Em que ano ele foi indicado? Por qual filme?
-R: The Defiant Ones e Lilies of the Field, 1958 e 1963
+11. Quem ganhou o primeiro Oscar de Melhor Atriz? Em que ano?
 
-Q:db.Registros.find({"nome_do_indicado":"Sidney Poitier"},{_id:0})
+Resposta: Janet Gaynor, em 1928.Consulta: db.Registros.findOne({categoria:"ACTRESS"})
 
-Quais os filmes que ganharam o Oscar de Melhor Filme e Melhor Diretor na mesma cerimonia?
-R:
- _id: {
-    ano_cerimonia: 1965,
-    nome_do_filme: 'My Fair Lady'
+12. Como alterar os valores do campo "Vencedor" de "true" para 1 e "false" para 0?
+
+Resposta: Executado com sucesso.Consulta:
+db.Registros.updateMany({vencedor:"false"},{$set: {vencedor: 0}})
+db.Registros.updateMany({vencedor:"true"},{$set: {vencedor: 1}})
+
+
+
+13. Em qual edição do Oscar o filme Crash concorreu?
+
+Resposta: 2006.Consulta: db.Registros.find({"nome_do_filme":"Crash"},{ano_cerimonia:1})
+
+14. O filme Central do Brasil aparece no banco de dados do Oscar?
+
+Resposta: Sim.Consulta: db.Registros.find({"nome_do_filme":"Central Station"})
+
+15. Quais filmes que nunca foram indicados ao Oscar foram adicionados ao banco?
+
+Resposta: Três filmes brasileiros adicionados:
+
+Inspetor Faustão e Malandro: A Missão (Primeira e Única) (1991)
+Categoria sugerida: Ator Principal (Fausto Corrêa)
+
+
+Ó Pai, Ó (2007)
+Categoria sugerida: Filme Internacional
+
+
+Os Sete Gatinhos (1980)
+Categoria sugerida: Melhor Filme
+
+
+
+Consulta de inserção:
+db.Registros.insertMany([
+  {
+    id_registro: 20000,
+    ano_filmagem: 1991,
+    ano_cerimonia: 1992,
+    cerimonia: 64,
+    categoria: "ACTOR IN A LEADING ROLE",
+    nome_do_indicado: "Fausto Corrêa",
+    nome_do_filme: "Inspector Faustão and Mallandro: The Mission (First and Only)",
+    vencedor: "false"
   },
-  categoria: [
-    'DIRECTING',
-    'BEST PICTURE'
-  ],
-  contador: 2
-,
-
-  _id: {
-    ano_cerimonia: 1985,
-    nome_do_filme: 'Amadeus'
+  {
+    id_registro: 20001,
+    ano_filmagem: 2007,
+    ano_cerimonia: 2008,
+    cerimonia: 80,
+    categoria: "INTERNATIONAL FEATURE FILM",
+    nome_do_indicado: "Brazil",
+    nome_do_filme: "O Dad, O",
+    vencedor: "false"
   },
-  categoria: [
-    'DIRECTING',
-    'BEST PICTURE'
-  ],
-  contador: 2
-  ,
-  _id: {
-    ano_cerimonia: 2009,
-    nome_do_filme: 'Slumdog Millionaire'
-  },
-  categoria: [
-    'DIRECTING',
-    'BEST PICTURE'
-  ],
-  contador: 2
-  
-  e mais 46 filmes
-  
+  {
+    id_registro: 20002,
+    ano_filmagem: 1980,
+    ano_cerimonia: 1981,
+    cerimonia: 53,
+    categoria: "BEST PICTURE",
+    nome_do_indicado: "Neville d'Almeida and Gilberto Loureiro",
+    nome_do_filme: "The Seven Kittens",
+    vencedor: "false"
+  }
+])
 
 
-Q:db.Registros.aggregate([{"$match":{"vencedor":"true", "categoria": {"$in":["BEST PICTURE","DIRECTING"]}}},{
-    "$group": {
-      "_id": {
-        "ano_cerimonia": "$ano_cerimonia",
-        "nome_do_filme": "$nome_do_filme"
-      },
-      "categoria":{$push: "$categoria"}, contador : {$sum:1}
-    }
-  },{$match: {contador:{$gt:1}}}])
 
-Denzel Washington e Jamie Foxx já concorreram ao Oscar no mesmo ano?
-R: Não
+16. Denzel Washington já ganhou algum Oscar?
 
-Q:db.Registros.aggregate([{"$match":{ "nome_do_indicado": {"$in":["Denzel Washington", "Jamie Foxx"]}}},{
-    "$group": {
-      "_id": {
-        "ano_cerimonia": "$ano_cerimonia"
-      },
-      "nome_do_indicado":{$push: "$nome_do_indicado"}, contador : {$sum:1}
-    }
-  }])o
+Resposta: Sim, 2 Oscars.Consulta: db.Registros.find({"nome_do_indicado":"Denzel Washington","vencedor":"true"}).count()
+
+17. Quais filmes ganharam o Oscar de Melhor Filme?
+
+Resposta: Alguns exemplos:
+
+Lawrence of Arabia
+Tom Jones
+My Fair Lady
+... e mais!
+
+Consulta: db.Registros.find({"categoria":"BEST PICTURE","vencedor":"true"},{_id:0,nome_do_filme:1})
+
+
+18. Em que anos Sidney Poitier, o primeiro ator negro indicado ao Oscar, foi indicado? Por quais filmes?
+
+Resposta: Indicado em 1958 (The Defiant Ones) e 1963 (Lilies of the Field).Consulta: db.Registros.find({"nome_do_indicado":"Sidney Poitier"},{_id:0})
+
+19. Quais filmes ganharam os Oscars de Melhor Filme e Melhor Diretor na mesma cerimônia?
+
+Resposta: Exemplos incluem:
+
+My Fair Lady (1965)
+Amadeus (1985)
+Slumdog Millionaire (2009)
+... e outros 46 filmes.
+
+Consulta:
+db.Registros.aggregate([
+  {"$match":{"vencedor":"true", "categoria": {"$in":["BEST PICTURE","DIRECTING"]}}},
+  {"$group": {
+    "_id": {"ano_cerimonia": "$ano_cerimonia", "nome_do_filme": "$nome_do_filme"},
+    "categoria":{$push: "$categoria"},
+    contador: {$sum:1}
+  }},
+  {$match: {contador:{$gt:1}}}
+])
+
+
+
+20. Denzel Washington e Jamie Foxx já concorreram ao Oscar no mesmo ano?
+
+Resposta: Não.Consulta:
+db.Registros.aggregate([
+  {"$match":{ "nome_do_indicado": {"$in":["Denzel Washington", "Jamie Foxx"]}}},
+  {"$group": {
+    "_id": {"ano_cerimonia": "$ano_cerimonia"},
+    "nome_do_indicado":{$push: "$nome_do_indicado"},
+    contador: {$sum:1}
+  }}
+])
+
+
+
+
+🛠️ Como Usar
+
+Pré-requisitos: Instale o MongoDB e importe o banco de dados.
+
