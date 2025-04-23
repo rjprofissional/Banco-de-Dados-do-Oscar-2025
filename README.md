@@ -1,7 +1,3 @@
-Para garantir que todas as consultas e códigos no README.md sejam facilmente copiáveis, vamos formatar cada consulta em blocos de código Markdown (```) com a linguagem apropriada (geralmente `javascript` para MongoDB ou `bash` para comandos de terminal). Além disso, manteremos a estrutura visual atrativa e organizada, com seções claras e emojis para destacar os pontos principais. Abaixo está a versão revisada do README.md, com todas as consultas e códigos formatados para cópia direta:
-
----
-
 # 🎥 Banco de Dados do Oscar 2025 🏆
 
 Bem-vindo ao **Banco de Dados do Oscar 2025**, um projeto apaixonante que reúne a história completa das indicações e vitórias do Oscar, desde sua primeira edição em 1928 até os dias atuais! 🌟 Este repositório é o seu passe de entrada para explorar curiosidades incríveis sobre filmes, atores, diretores e as maiores conquistas do cinema. Preparado para mergulhar no glamour de Hollywood? 🎬
